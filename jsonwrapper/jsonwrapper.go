@@ -3,6 +3,7 @@ package jsonwrapper
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -53,7 +54,7 @@ func (j *JSONDataWrapper) UpdateChartVersion(chartName string, chartVersion stri
 		return err
 	}
 	if !found {
-		err := errors.New("chart name not found in the provided path")
+		err := errors.New(fmt.Sprintf("chart name { %s } not found in the provided path { %v }", chartName, namePathSegments))
 		log.Printf(err.Error())
 		return err
 	}
